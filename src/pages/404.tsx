@@ -12,7 +12,7 @@ const PageNotFound = () => {
         />
       }
     >
-        <NotFound/>
+      <NotFound/>
     </Main>
   );
 };

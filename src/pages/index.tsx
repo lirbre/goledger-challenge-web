@@ -44,14 +44,16 @@ const Index = () => {
     >
       <div className="max-w-[1134px] w-full mx-auto flex flex-col justify-center px-3 py-12 ">
         {!isLoading ? (
-          <>
+          <div style={{ animation: "fadeIn .7s" }}>
             <h5 className="text-[#1a202c]">What are you Looking for?</h5>
-            <div className="mt-8 grid gap-3 lg:grid-cols-4 grid-cols-2 w-full">
+            <div
+              className="mt-8 grid gap-3 lg:grid-cols-4 grid-cols-2 w-full"
+            >
               {mapOptions}
             </div>
-          </>
+          </div>
         ) : (
-          <Loading/>
+          <Loading />
         )}
       </div>
     </Main>

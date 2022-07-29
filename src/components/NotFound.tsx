@@ -25,7 +25,7 @@ export const NotFound = () => {
   }
 
   return (
-    <main className="width-full">
+    <main className="width-full" style={{ animation: "fadeIn .7s" }}>
       <div className="flex flex-col mx-auto max-w-[1134px] py-12 px-3 md:h-[264px] h-[300px]">
         <h5 className="mb-8 text-[#1a202c]">Nothing Found</h5>
         <small className="text-[#4a5568]">

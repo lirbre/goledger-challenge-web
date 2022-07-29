@@ -18,7 +18,7 @@ const Index = () => {
   }, [label]);
 
   useEffect(() => {
-    if (!myRes) return
+    if (!myRes) return;
     !isLoading && myRes?.length === 0 && router.replace("/404");
   }, [myRes, isLoading]);
 
@@ -26,7 +26,7 @@ const Index = () => {
     () =>
       !isLoading &&
       myRes?.map((item: SearchProps) => (
-        <p key={item["@key"]}>{item["model"] || item["name"]}</p>
+        <small key={item["@key"]}>{item["model"] || item["name"]}</small>
       )),
     [myRes, isLoading]
   );
@@ -40,7 +40,13 @@ const Index = () => {
         />
       }
     >
-      {!isLoading ? <div>{mapOptions}</div> : <Loading />}
+      <div className="px-3 py-12 flex items-center justify-center max-w-[1134px] mx-auto">
+        {!isLoading ? (
+          <div style={{ animation: "fadeIn .7s" }} className='grid md:grid-cols-4 grid-cols-2 gap-3 w-full'>{mapOptions}</div>
+        ) : (
+          <Loading />
+        )}
+      </div>
     </Main>
   );
 };
