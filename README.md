@@ -10,6 +10,16 @@
 - This project is made using [GoLedger - Challenge](https://github.com/GoLedgerDev/goledger-challenge-web) as guidelines. I used Next.js - since it was a differential in their [job description](https://goledger.notion.site/Trabalhe-na-GoLedger-ffd1a6548a1e4f1a959b80b36aa66831?p=fa80d2cb60a84518a81c756cd0413c05&pm=c). My style guide was inspire in their [website](https://goledger.com.br) except of my custom Fluid Typography using the [Utopia](https://utopia.fyi/type/calculator?c=320,16,1.125,1800,20,1.333,6,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l) system.
 - It was made using Next.js, TypeScript and Tailwind. The information was dinamically generated and handled by Next.js router using simple Dinamically router - You can see it on `src/pages/list/[label].tsx`.
 
+Home
+-------------------------------------------------
+![Captura de ecrã de 2022-07-29 15-32-24](https://user-images.githubusercontent.com/86065449/181823041-24438835-173b-4014-a856-f020c492c8f9.png)
+- Fetch all Labels from: `http://ec2-100-25-136-128.compute-1.amazonaws.com/api/query/getSchema` - and creates buttons accordingly to that Labels. The buttons will redirect to `/list/[labels].tsx` making the frontend handle what information it would have.
+  - With that I can handle changes on API or add new Labels on API without having to change the Frontend.
+  
+Loading
+-------------------------------------------------
+![Captura de ecrã de 2022-07-29 15-37-08](https://user-images.githubusercontent.com/86065449/181823551-e0af2295-48ac-439a-b4f9-3540ed3b7cf0.png)
+- Uses the "Loading" state that my Custom Hooks gave me. With that I can handle Load states from the dinamically handed API data.
 
 404 - Not Found page
 -------------------------------------------------
