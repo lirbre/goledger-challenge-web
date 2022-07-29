@@ -10,7 +10,9 @@ export const List = () => {
   const [searchBar, setSearchBar] = useState<string>("");
   const router = useRouter();
   const { label } = router.query;
-  const { callSearch, myRes, isLoading } = useSearch<SearchProps[]>();
+
+  const { callSearch, myRes, isLoading, refetch } = useSearch<SearchProps[]>();
+
   const { setIsOpen, setTitle } = useModal();
 
   const openCreate = () => {
@@ -30,25 +32,29 @@ export const List = () => {
     console.log(myRes);
   }, [myRes, isLoading]);
 
+  const filteredResult = useMemo(
+    () =>
+      myRes &&
+      [...myRes]?.filter((item) => {
+        if (searchBar === "") return true;
+
+        return (
+          (item.name || item.model)
+            ?.split("")
+            .slice(0, searchBar.length)
+            .join("")
+            .toLowerCase() === searchBar.toLowerCase()
+        );
+      }),
+    [myRes, searchBar]
+  );
+
   const mapOptions = useMemo(
     () =>
       !isLoading &&
-      myRes &&
-      [...myRes]
-        ?.filter((item) => {
-          if (searchBar === "") return true;
-
-          return (
-            (item.name || item.model)
-              ?.split("")
-              .slice(0, searchBar.length)
-              .join("")
-              .toLowerCase() === searchBar.toLowerCase()
-          );
-        })
-        .map((item: SearchProps) => (
-          <ListItem key={item["@key"]} item={item} />
-        )),
+      filteredResult!.map((item: SearchProps) => (
+        <ListItem key={item["@key"]} item={item} refetch={refetch} />
+      )),
     [myRes, isLoading, searchBar]
   );
 
@@ -64,7 +70,14 @@ export const List = () => {
             >
               <small>Add a new item</small>
             </button>
-            {mapOptions}
+            {filteredResult!.length > 0 ? (
+              mapOptions
+            ) : (
+              <div className="h-[78px] w-full py-4 px-3 border-[#e2e8f0] border shadow-md flex items-center justify-center rounded-sm hover:opacity-80 transition-all duration-300">
+                {" "}
+                <small className="text-center">Nothing found.<br/>Please verify your search.</small>
+              </div>
+            )}
           </div>
         </div>
       ) : (

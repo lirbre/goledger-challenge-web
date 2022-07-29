@@ -28,5 +28,10 @@ export const useSearch = <T,>() => {
       .finally(() => setIsLoading(false));
   };
 
-  return { callSearch, isLoading, myRes };
+  const refetch = (doctype: string) => {
+    setIsLoading(true)
+    callSearch(doctype)
+  }
+
+  return { callSearch, isLoading, myRes, refetch };
 };

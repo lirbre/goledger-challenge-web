@@ -1,6 +1,6 @@
 import { useModal } from "@/hooks";
 import { useDelete } from "@/hooks/useDelete";
-import { useEdit } from "@/hooks/useEdit";
+import { useEdit } from "@/hooks";
 import { SearchProps } from "@/typing/api";
 import { AiTwotoneEdit, AiFillDelete } from "react-icons/ai";
 import Loading from "./loading";
