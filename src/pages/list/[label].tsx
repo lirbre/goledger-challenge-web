@@ -1,4 +1,5 @@
 import { Loading } from "@/components";
+import { ListItem } from "@/components";
 import { useSearch } from "@/hooks";
 import { Meta } from "@/layouts";
 import { Main } from "@/templates";
@@ -20,13 +21,14 @@ const Index = () => {
   useEffect(() => {
     if (!myRes) return;
     !isLoading && myRes?.length === 0 && router.replace("/404");
+    console.log(myRes);
   }, [myRes, isLoading]);
 
   const mapOptions = useMemo(
     () =>
       !isLoading &&
       myRes?.map((item: SearchProps) => (
-        <small key={item["@key"]}>{item["model"] || item["name"]}</small>
+          <ListItem key={item["@key"]} item={item} />
       )),
     [myRes, isLoading]
   );
@@ -42,7 +44,15 @@ const Index = () => {
     >
       <div className="px-3 py-12 flex items-center justify-center max-w-[1134px] mx-auto">
         {!isLoading ? (
-          <div style={{ animation: "fadeIn .7s" }} className='grid md:grid-cols-4 grid-cols-2 gap-3 w-full'>{mapOptions}</div>
+          <div
+            style={{ animation: "fadeIn .7s" }}
+            className="grid md:grid-cols-4 grid-cols-2 gap-3 w-full"
+          >
+            {mapOptions}
+            <button className="h-[78px] w-full py-4 px-3 border-[#e2e8f0] border shadow-md flex items-center justify-center rounded-sm hover:opacity-80 transition-all duration-300">
+              <small>Add a new item</small>
+            </button>
+          </div>
         ) : (
           <Loading />
         )}
