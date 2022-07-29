@@ -7,11 +7,13 @@ import "../styles/typography.css";
 import { AppProps } from "next/app";
 import { ThemeProvider } from "next-themes";
 import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <ThemeProvider forcedTheme={'white'}>
     <Navbar/>
     <Component {...pageProps} />
+    <Footer/>
   </ThemeProvider>
 );
 
