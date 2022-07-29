@@ -26,6 +26,16 @@ List
 ![Captura de ecrã de 2022-07-29 18-38-17](https://user-images.githubusercontent.com/86065449/181846647-e0ead103-90c9-4c4b-8313-b2c232b5566a.png)
 - With a simple UI/UX - Implements an Edit / Delete button right after the item and a button to add new Items to that specific list. And a Search filter on top of it.
 
+Edit (Modal)
+-------------------------------------------------
+![Captura de ecrã de 2022-07-29 20-24-06](https://user-images.githubusercontent.com/86065449/181860018-ea1f7fe2-3a5d-4033-9b9a-6c3da345f7c4.png)
+- A simple Modal to edit Items.
+
+Delete (Modal)
+-------------------------------------------------
+![Captura de ecrã de 2022-07-29 20-24-10](https://user-images.githubusercontent.com/86065449/181860047-e8b20c18-7511-45dc-b96f-379a9d3855b3.png)
+- A simple Modal to delete Items.
+
 404 - Not Found page
 -------------------------------------------------
 ![Captura de ecrã de 2022-07-29 14-43-32](https://user-images.githubusercontent.com/86065449/181817921-71ec9c8b-e123-45a0-a227-1552c513f3a4.png)
