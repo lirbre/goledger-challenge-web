@@ -28,3 +28,14 @@
   ![Captura de ecrã de 2022-07-29 15-04-17](https://user-images.githubusercontent.com/86065449/181818576-266cf003-6313-4c71-ac1b-305d4ac2c2eb.png)
   ![Captura de ecrã de 2022-07-29 15-03-53](https://user-images.githubusercontent.com/86065449/181818584-41338482-cdd8-448d-a523-8bac722aebf5.png)
 
+
+Footer
+-------------------------------------------------
+  ![Captura de ecrã de 2022-07-29 15-08-21](https://user-images.githubusercontent.com/86065449/181819129-1f7cf772-97c0-42fb-b1eb-fcaa38bd7e32.png)
+
+
+Navbar
+-------------------------------------------------
+  ![Captura de ecrã de 2022-07-29 15-08-14](https://user-images.githubusercontent.com/86065449/181819185-e77f5f06-4974-495e-a866-c579ebfb4748.png)
+
+  
