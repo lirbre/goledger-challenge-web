@@ -21,6 +21,11 @@ Loading
 ![Captura de ecrã de 2022-07-29 15-37-08](https://user-images.githubusercontent.com/86065449/181823551-e0af2295-48ac-439a-b4f9-3540ed3b7cf0.png)
 - Uses the "Loading" state that my Custom Hooks gave me. With that I can handle Load states from the dinamically handed API data.
 
+List
+-------------------------------------------------
+![Captura de ecrã de 2022-07-29 17-41-35](https://user-images.githubusercontent.com/86065449/181840253-9ae04dc9-4146-4b7b-940d-38f55519480b.png)
+- With a simple UI/UX - Implements an Edit / Delete button right after the item and a button to add new Items to that specific list.
+
 404 - Not Found page
 -------------------------------------------------
 ![Captura de ecrã de 2022-07-29 14-43-32](https://user-images.githubusercontent.com/86065449/181817921-71ec9c8b-e123-45a0-a227-1552c513f3a4.png)
