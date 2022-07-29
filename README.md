@@ -1,72 +1,30 @@
-🚀 Boilerplate and Starter for Next.js, Tailwind CSS and TypeScript ⚡️ Made with developer experience first: Next.js, TypeScript, ESLint, Prettier, Husky, Lint-Staged, VSCode, Netlify, PostCSS, Tailwind CSS.
+  Guide to Run Locally:
+-------------------------------------------------
+- Clone and Install with `npm install` or `yarn install`.
+  - Use `npm run dev` or `yarn dev` to run it as Dev.
+  - Access it On Vercel - [GoLedger Challenge - Breno Lira](https://goledger-challenge-web.vercel.app/) - API only works on HTTP (*trying to figure out what do.*)
 
-### Features
 
-Developer experience first:
+ Sumary
+-------------------------------------------------
+- This project is made using [GoLedger - Challenge](https://github.com/GoLedgerDev/goledger-challenge-web) as guidelines. I used Next.js - since it was a differential in their [job description](https://goledger.notion.site/Trabalhe-na-GoLedger-ffd1a6548a1e4f1a959b80b36aa66831?p=fa80d2cb60a84518a81c756cd0413c05&pm=c). My style guide was inspire in their [website](https://goledger.com.br) except of my custom Fluid Typography using the [Utopia](https://utopia.fyi/type/calculator?c=320,16,1.125,1800,20,1.333,6,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l) system.
+- It was made using Next.js, TypeScript and Tailwind. The information was dinamically generated and handled by Next.js router using simple Dinamically router - You can see it on `src/pages/list/[label].tsx`.
 
-- 🔥 [Next.js](https://nextjs.org) for Static Site Generator
-- 🎨 Integrate with [Tailwind CSS](https://tailwindcss.com)
-- 🎉 Type checking [TypeScript](https://www.typescriptlang.org)
-- ✅ Strict Mode for TypeScript and React 18
-- ✏️ Linter with [ESLint](https://eslint.org) (default NextJS, NextJS Core Web Vitals, Tailwind CSS and Airbnb configuration)
-- 💡 Absolute Imports
-- 🛠 Code Formatter with [Prettier](https://prettier.io)
-- 🦊 Husky for Git Hooks
-- 🚫 Lint-staged for running linters on Git staged files
-- 🤖 SEO metadata, JSON-LD and Open Graph tags with Next SEO
-- ⚙️ [Bundler Analyzer](https://www.npmjs.com/package/@next/bundle-analyzer)
 
-### Getting started
+404 - Not Found page
+-------------------------------------------------
+![Captura de ecrã de 2022-07-29 14-43-32](https://user-images.githubusercontent.com/86065449/181817921-71ec9c8b-e123-45a0-a227-1552c513f3a4.png)
+- Inspired by [GoLedger - Not Found](https://goledger.com.br/404) - I've made it as a resource to countermeasure the Dinamically generate pages.
+  - It is slightly different from GoLedger not Found - but I've done single adjustments that I think can be UX improvements.
+  
+1. Make it only searchs when the input isn't cleared.
+  - If you try to search like that - currently - on GoLedger page. It would redirect the user (see the print below):
+  
+  ![Captura de ecrã de 2022-07-29 14-44-09](https://user-images.githubusercontent.com/86065449/181817996-16c99ea4-c7fb-4156-8375-3d8184c9b95f.png)
+  ![Captura de ecrã de 2022-07-29 15-02-36](https://user-images.githubusercontent.com/86065449/181818339-446a203f-7b1b-4571-833f-50721bc8bc04.png)
+  
+2. Make it only searchs when the input has less than 100 chars.
 
-Run the following command on your local environment:
+  ![Captura de ecrã de 2022-07-29 15-04-17](https://user-images.githubusercontent.com/86065449/181818576-266cf003-6313-4c71-ac1b-305d4ac2c2eb.png)
+  ![Captura de ecrã de 2022-07-29 15-03-53](https://user-images.githubusercontent.com/86065449/181818584-41338482-cdd8-448d-a523-8bac722aebf5.png)
 
-```
-git clone git@github.com:gabrieldemian/evil-nextjs-boilerplate.git my-project-name
-cd my-project-name
-npm install
-```
-
-Then, you can run locally in development mode with live reload:
-
-```
-npm run dev
-```
-
-Open http://localhost:3000 with your favorite browser to see your project.
-
-```
-.
-├── README.md                # README file
-├── next.config.js           # Next JS configuration
-├── public                   # Public folder
-│   └── assets
-│       └── images           # Image used by default template
-├── src
-│   ├── components           # Components folder
-│   ├── layout               # Atomic layout components
-│   ├── pages                # Next JS pages
-│   ├── styles               # PostCSS style folder with Tailwind
-│   ├── templates            # Default template
-│   └── utils                # Utility folder
-├── tailwind.config.js       # Tailwind CSS configuration
-└── tsconfig.json            # TypeScript configuration
-```
-
-### Deploy to production
-
-You can see the results locally in production mode with:
-
-```
-$ yarn build
-$ yarn start
-```
-
-The generated HTML and CSS files are minified (built-in feature from Next js). It will also removed unused CSS from [Tailwind CSS](https://tailwindcss.com).
-
-You can create an optimized production build with:
-
-```
-npm run build-prod
-```
-
-Now, it is ready to be deployed. All generated files are located at `out` folder, which you can deploy with any hosting service.
