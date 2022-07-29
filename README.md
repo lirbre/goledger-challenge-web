@@ -1,28 +1,72 @@
-# GoLedger Challenge
+🚀 Boilerplate and Starter for Next.js, Tailwind CSS and TypeScript ⚡️ Made with developer experience first: Next.js, TypeScript, ESLint, Prettier, Husky, Lint-Staged, VSCode, Netlify, PostCSS, Tailwind CSS.
 
-In this challenge you will create a web interface to a blockchain application. In this application you must implement a race event, car and driver dashboard.
+### Features
 
-# Requirements
+Developer experience first:
 
-- Your application should be able to add/remove/edit and show all cars, drivers, teams and events;
-- Use **React** (all UI libraries are allowed);
+- 🔥 [Next.js](https://nextjs.org) for Static Site Generator
+- 🎨 Integrate with [Tailwind CSS](https://tailwindcss.com)
+- 🎉 Type checking [TypeScript](https://www.typescriptlang.org)
+- ✅ Strict Mode for TypeScript and React 18
+- ✏️ Linter with [ESLint](https://eslint.org) (default NextJS, NextJS Core Web Vitals, Tailwind CSS and Airbnb configuration)
+- 💡 Absolute Imports
+- 🛠 Code Formatter with [Prettier](https://prettier.io)
+- 🦊 Husky for Git Hooks
+- 🚫 Lint-staged for running linters on Git staged files
+- 🤖 SEO metadata, JSON-LD and Open Graph tags with Next SEO
+- ⚙️ [Bundler Analyzer](https://www.npmjs.com/package/@next/bundle-analyzer)
 
-## Instructions
+### Getting started
 
-- Fork the repository [https://github.com/goledgerdev/goledger-challenge-web](https://github.com/goledgerdev/goledger-challenge-web)
-    - Fork it, do **NOT** clone it, since you will need to send us your forked repository
-    - If you **cannot** fork it, create a private repository and give access to `samuelvenzi` and `lucas-campelo`.
-- Create an web application using React. You will implement the basic operations provided by the API, which are `Create`, `Update`, `Delete` and `Search`.
-- Improve your application with a beautiful UI.
+Run the following command on your local environment:
 
-## Server
+```
+git clone git@github.com:gabrieldemian/evil-nextjs-boilerplate.git my-project-name
+cd my-project-name
+npm install
+```
 
-The data are obtained using a rest server at this address: `http://ec2-100-25-136-128.compute-1.amazonaws.com`
+Then, you can run locally in development mode with live reload:
 
-Also, a Swagger with the endpoints specifications for the operations is provided at this address: `http://ec2-100-25-136-128.compute-1.amazonaws.com/api-docs/`.
+```
+npm run dev
+```
 
-Tip: execute each operation in the Swagger for information on payload format and endpoint addresses.
+Open http://localhost:3000 with your favorite browser to see your project.
 
-## Complete the challenge
+```
+.
+├── README.md                # README file
+├── next.config.js           # Next JS configuration
+├── public                   # Public folder
+│   └── assets
+│       └── images           # Image used by default template
+├── src
+│   ├── components           # Components folder
+│   ├── layout               # Atomic layout components
+│   ├── pages                # Next JS pages
+│   ├── styles               # PostCSS style folder with Tailwind
+│   ├── templates            # Default template
+│   └── utils                # Utility folder
+├── tailwind.config.js       # Tailwind CSS configuration
+└── tsconfig.json            # TypeScript configuration
+```
 
-To complete the challenge, you must send us the link to your forked repository with the code of your application. Please, provide instructions to execute the code.
+### Deploy to production
+
+You can see the results locally in production mode with:
+
+```
+$ yarn build
+$ yarn start
+```
+
+The generated HTML and CSS files are minified (built-in feature from Next js). It will also removed unused CSS from [Tailwind CSS](https://tailwindcss.com).
+
+You can create an optimized production build with:
+
+```
+npm run build-prod
+```
+
+Now, it is ready to be deployed. All generated files are located at `out` folder, which you can deploy with any hosting service.
