@@ -4,17 +4,17 @@ import { Main } from "@/templates";
 
 const PageNotFound = () => {
   return (
-    <Main
-      meta={
-        <Meta
-          title="Página não encontrada"
-          description="Sorry! You probably is searching for something that doesn't exist yet."
-        />
-      }
-    >
-      <NotFound/>
-    </Main>
+      <Main
+        meta={
+          <Meta
+            title="Página não encontrada"
+            description="Sorry! You probably is searching for something that doesn't exist yet."
+          />
+        }
+      >
+        <NotFound />
+      </Main>
   );
 };
 
-export default PageNotFound; 
+export default PageNotFound;
