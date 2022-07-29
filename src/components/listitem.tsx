@@ -1,22 +1,86 @@
 import { useModal } from "@/hooks";
+import { useDelete } from "@/hooks/useDelete";
+import { useEdit } from "@/hooks/useEdit";
 import { SearchProps } from "@/typing/api";
 import { AiTwotoneEdit, AiFillDelete } from "react-icons/ai";
+import Loading from "./loading";
+import { EditModal } from "./_ModalBody";
+import { DeleteModal } from "./_ModalBody/delete";
 
 interface ListItemProps {
   item: SearchProps;
+  refetch(type: string): void;
 }
 
-export const ListItem = ({ item }: ListItemProps) => {
-  const { setIsOpen, setTitle } = useModal();
+export const ListItem = ({ item, refetch }: ListItemProps) => {
+  const { setIsOpen, setTitle, setBody, close } = useModal();
+  const { callDelete } = useDelete<any>();
+  const { callEdit } = useEdit<any>();
+
+  const deleteItem = () => {
+    callDelete({
+      docType: item["@assetType"],
+      key: item["@key"],
+      refetch: refetch,
+    }).then(() =>
+      setBody(
+        <div className="pt-8">
+          <Loading />
+        </div>
+      )
+    );
+
+    const closeTimeout = setTimeout(() => {
+      close();
+    }, 3750);
+
+    () => clearTimeout(closeTimeout);
+  };
+
+  const editItem = (newValue: string) => {
+    callEdit({
+      docType: item["@assetType"],
+      key: item["@key"],
+      newValue: newValue,
+      refetch: refetch,
+    }).then(() =>
+      setBody(
+        <div className="pt-8">
+          <Loading />
+        </div>
+      )
+    );
+
+    const closeTimeout = setTimeout(() => {
+      close();
+    }, 3750);
+
+    () => clearTimeout(closeTimeout);
+  };
 
   const openEdit = () => {
     setIsOpen(true);
-    setTitle(`Editing ${item.name || item.model}`);
+    setTitle(`Editing ${item?.name || item?.model || ''}`);
+    setBody(
+      <EditModal
+        buttonName="Edit"
+        handleClick={editItem}
+        title={"Do you want to Edit?"}
+        oldValue={item?.name || item?.model || ''}
+      />
+    );
   };
 
   const openDelete = () => {
     setIsOpen(true);
     setTitle(`Deleting ${item.name || item.model}`);
+    setBody(
+      <DeleteModal
+        buttonName="Delete"
+        handleClick={deleteItem}
+        title={"Do you want to Delete?"}
+      />
+    );
   };
 
   return (
