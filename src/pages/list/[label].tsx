@@ -1,3 +1,4 @@
+import { Loading } from "@/components";
 import { useSearch } from "@/hooks";
 import { Meta } from "@/layouts";
 import { Main } from "@/templates";
@@ -16,10 +17,17 @@ const Index = () => {
     callSearch(label as string);
   }, [label]);
 
-  useEffect(() => console.log(myRes, isLoading), [myRes, isLoading]);
+  useEffect(() => {
+    if (!myRes) return
+    !isLoading && myRes?.length === 0 && router.replace("/404");
+  }, [myRes, isLoading]);
 
   const mapOptions = useMemo(
-    () => !isLoading && myRes?.map((item: SearchProps) => <p key={item['@key']}>{item['model'] || item['name']}</p>),
+    () =>
+      !isLoading &&
+      myRes?.map((item: SearchProps) => (
+        <p key={item["@key"]}>{item["model"] || item["name"]}</p>
+      )),
     [myRes, isLoading]
   );
 
@@ -32,7 +40,7 @@ const Index = () => {
         />
       }
     >
-      <div>{mapOptions}</div>
+      {!isLoading ? <div>{mapOptions}</div> : <Loading />}
     </Main>
   );
 };
