@@ -23,8 +23,8 @@ Loading
 
 List
 -------------------------------------------------
-![Captura de ecrã de 2022-07-29 17-41-35](https://user-images.githubusercontent.com/86065449/181840253-9ae04dc9-4146-4b7b-940d-38f55519480b.png)
-- With a simple UI/UX - Implements an Edit / Delete button right after the item and a button to add new Items to that specific list.
+![Captura de ecrã de 2022-07-29 18-38-17](https://user-images.githubusercontent.com/86065449/181846647-e0ead103-90c9-4c4b-8313-b2c232b5566a.png)
+- With a simple UI/UX - Implements an Edit / Delete button right after the item and a button to add new Items to that specific list. And a Search filter on top of it.
 
 404 - Not Found page
 -------------------------------------------------
