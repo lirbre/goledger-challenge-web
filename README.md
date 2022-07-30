@@ -36,6 +36,14 @@ Delete (Modal)
 ![Captura de ecrã de 2022-07-29 20-24-10](https://user-images.githubusercontent.com/86065449/181860047-e8b20c18-7511-45dc-b96f-379a9d3855b3.png)
 - A simple Modal to delete Items.
 
+Create (Modal)
+-------------------------------------------------
+![Captura de ecrã de 2022-07-29 22-37-53](https://user-images.githubusercontent.com/86065449/181865383-88e3feeb-e95a-481f-afd9-ec99508d631e.png)
+![Captura de ecrã de 2022-07-29 22-38-05](https://user-images.githubusercontent.com/86065449/181865384-8bf792ce-25fe-41a7-8f25-3e934e64bb0b.png)
+![Captura de ecrã de 2022-07-29 22-38-14](https://user-images.githubusercontent.com/86065449/181865385-0bfe9c53-4f07-46eb-a369-fb7be0790a8a.png)
+![Captura de ecrã de 2022-07-29 22-39-21](https://user-images.githubusercontent.com/86065449/181865386-d2b05f3d-8732-4a22-a45d-5608e26c42e9.png)
+- A Modal to create each new item.
+
 404 - Not Found page
 -------------------------------------------------
 ![Captura de ecrã de 2022-07-29 14-43-32](https://user-images.githubusercontent.com/86065449/181817921-71ec9c8b-e123-45a0-a227-1552c513f3a4.png)
