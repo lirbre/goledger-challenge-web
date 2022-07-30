@@ -7,7 +7,6 @@ export const useSearch = <T,>() => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const callSearch = (docType: string ) => {
-    console.log(docType)
     const body = {
       query: {
         selector: {

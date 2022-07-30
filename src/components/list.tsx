@@ -1,10 +1,19 @@
 import { Loading } from "@/components";
 import { ListItem } from "@/components";
-import { useModal, useSearch } from "@/hooks";
+import { useModal, useSearch, useCreate } from "@/hooks";
 import { SearchProps } from "@/typing/api";
 import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
+import { toast } from "react-toastify";
 import { Form } from "./form";
+import { CreateTeam, CreateDriver, CreateCar, CreateEvent } from "./_ModalBody/_CreateModal";
+
+export interface CreateItemProps {
+  docType: string;
+  newValue: string;
+  selectedKey?: string;
+  newPrize?: number
+}
 
 export const List = () => {
   const [searchBar, setSearchBar] = useState<string>("");
@@ -12,12 +21,78 @@ export const List = () => {
   const { label } = router.query;
 
   const { callSearch, myRes, isLoading, refetch } = useSearch<SearchProps[]>();
+  const { callCreate } = useCreate();
 
-  const { setIsOpen, setTitle } = useModal();
+  const { setIsOpen, setTitle, setBody, close } = useModal();
+
+  const createItem = ({
+    docType,
+    newValue,
+    selectedKey = "",
+    newPrize = 0
+  }: CreateItemProps) => {
+    callCreate({ docType, newValue, refetch, selectedKey, newPrize });
+    setBody(
+      <div className="pt-8">
+        <Loading />
+      </div>
+    );
+
+    const closeTimeout = setTimeout(() => {
+      close();
+    }, 4000);
+
+    () => clearTimeout(closeTimeout);
+  };
 
   const openCreate = () => {
     setIsOpen(true);
     setTitle(`Create a new ${label} item`);
+
+    switch (true) {
+      case label === "team":
+        setBody(
+          <CreateTeam
+            buttonName="Create"
+            docType={label as "team"}
+            handleClick={createItem}
+            title="Create your new Team:"
+          />
+        );
+        break;
+      case label === "driver":
+        setBody(
+          <CreateDriver
+            buttonName="Create"
+            docType={label as "driver"}
+            handleClick={createItem}
+            title="Create your new Driver:"
+          />
+        );
+        break;
+      case label === "car":
+        setBody(
+          <CreateCar
+            buttonName="Create"
+            docType={label as "car"}
+            handleClick={createItem}
+            title="Create your new Car:"
+          />
+        );
+        break;
+      case label === "event":
+        setBody(
+          <CreateEvent
+            buttonName="Create"
+            docType={label as "event"}
+            handleClick={createItem}
+            title="Create your new Event:"
+          />
+        );
+        break;
+      default:
+        return toast.warn("Label not Supported - Please contact Breno.");
+    }
   };
 
   useEffect(() => {
@@ -75,7 +150,11 @@ export const List = () => {
             ) : (
               <div className="h-[78px] w-full py-4 px-3 border-[#e2e8f0] border shadow-md flex items-center justify-center rounded-sm hover:opacity-80 transition-all duration-300">
                 {" "}
-                <small className="text-center">Nothing found.<br/>Please verify your search.</small>
+                <small className="text-center">
+                  Nothing found.
+                  <br />
+                  Please verify your search.
+                </small>
               </div>
             )}
           </div>

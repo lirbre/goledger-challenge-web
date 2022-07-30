@@ -36,7 +36,7 @@ const Loading = ({ msg = "Loading..." }: Props) => {
         </circle>
       </svg>
       {msg && (
-        <small className="mt-6 text-center font-bold text-[#F2f2f2]">
+        <small className="mt-6 text-center font-bold text-[#1a202c]">
           {msg}
         </small>
       )}

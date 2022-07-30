@@ -21,6 +21,11 @@ export const EditModal = ({
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
+    if (newValue.split("").length === 0) {
+      toast.warn("You can't edit to a empty name.");
+      return;
+    }
+
     if (newValue === oldValue) {
       toast.warn("You should change something to edit it.");
       return;

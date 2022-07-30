@@ -20,6 +20,8 @@ export const useDelete = <T,>() => {
         "@key": `${key}`,
       },
     };
+
+    console.log(body)
     const header = {
       "Content-Type": "application/json",
     };
