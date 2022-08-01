@@ -17,7 +17,8 @@ export interface CreateItemProps {
   docType: string;
   changeValue: string;
   selectedKey?: string;
-  newPrize?: number;
+  prize?: number;
+  date?: string;
 }
 
 export const List = () => {
@@ -34,14 +35,16 @@ export const List = () => {
     docType,
     changeValue,
     selectedKey = "",
-    newPrize = 0,
+    prize = 0,
+    date = ''
   }: CreateItemProps) => {
     callCreate({
       docType,
       newValue: changeValue,
       refetch,
       selectedKey,
-      newPrize,
+      prize,
+      date
     });
     setBody(
       <div className="pt-8">

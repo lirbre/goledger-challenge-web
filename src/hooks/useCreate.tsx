@@ -8,7 +8,8 @@ interface CallCreateProps {
   newValue: string;
   refetch(type: string): void;
   selectedKey?: string;
-  newPrize?: number;
+  prize?: number;
+  date?: string;
 }
 
 export const useCreate = <T,>() => {
@@ -20,7 +21,8 @@ export const useCreate = <T,>() => {
     newValue,
     refetch,
     selectedKey,
-    newPrize,
+    prize,
+    date
   }: CallCreateProps) => {
     let body;
 
@@ -68,8 +70,8 @@ export const useCreate = <T,>() => {
           {
             "@assetType": "event",
             name: newValue,
-            prize: newPrize,
-            date: new Date().toISOString(),
+            prize: prize,
+            date: new Date(date!).toISOString(),
             winner: { "@key": selectedKey },
           },
         ],
