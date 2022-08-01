@@ -158,7 +158,7 @@ export const CreateEvent = ({
             </small>
             <input
               id="search--input"
-              type="datetime-local"
+              type="date"
               className="border-[#e2e8f0] bg-[#fff] border h-[42px] w-full rounded-l-[4px] px-3 py-2 text-[#4a5568] text-sm font-thin focus:outline-dotted outline-[1px] outline-offset-[-2px]"
               placeholder="Set a date for your event ..."
               onChange={(e) =>

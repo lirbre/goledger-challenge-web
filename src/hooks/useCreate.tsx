@@ -22,63 +22,63 @@ export const useCreate = <T,>() => {
     refetch,
     selectedKey,
     prize,
-    date
+    date,
   }: CallCreateProps) => {
     let body;
 
-    if (docType === "team") {
-      body = {
-        asset: [
-          {
-            "@assetType": "team",
-            name: newValue,
-            id: Math.ceil(Math.random() * 100 + 999),
-          },
-        ],
-      };
-    }
+    switch (true) {
+      case docType === "driver":
+        body = {
+          asset: [
+            {
+              "@assetType": "driver",
+              name: newValue,
+              id: Math.ceil(Math.random() * 100 + 999 * 2),
+              team: { "@key": selectedKey },
+            },
+          ],
+        };
+        break;
 
-    if (docType === "driver") {
-      body = {
-        asset: [
-          {
-            "@assetType": "driver",
-            name: newValue,
-            id: Math.ceil(Math.random() * 100 + 999 * 2),
-            team: { "@key": selectedKey },
-          },
-        ],
-      };
-    }
+      case docType === "car":
+        body = {
+          asset: [
+            {
+              "@assetType": "car",
+              model: newValue,
+              id: Math.ceil(Math.random() * 100 + 999 * 3),
+              driver: { "@key": selectedKey },
+            },
+          ],
+        };
+        break;
 
-    if (docType === "car") {
-      body = {
-        asset: [
-          {
-            "@assetType": "car",
-            model: newValue,
-            id: Math.ceil(Math.random() * 100 + 999 * 3),
-            driver: { "@key": selectedKey },
-          },
-        ],
-      };
-    }
+      case docType === "event":
+        body = {
+          asset: [
+            {
+              "@assetType": "event",
+              name: newValue,
+              prize: prize,
+              date: new Date(date!).toISOString(),
+              winner: { "@key": selectedKey },
+            },
+          ],
+        };
+        break;
 
-    if (docType === "event") {
-      body = {
-        asset: [
-          {
-            "@assetType": "event",
-            name: newValue,
-            prize: prize,
-            date: new Date(date!).toISOString(),
-            winner: { "@key": selectedKey },
-          },
-        ],
-      };
+      default:
+        body = {
+          asset: [
+            {
+              "@assetType": "team",
+              name: newValue,
+              id: Math.ceil(Math.random() * 100 + 999),
+            },
+          ],
+        };
+        break;
     }
-
-    console.log("try to create -> ", body);
 
     const header = {
       "Content-Type": "application/json",
