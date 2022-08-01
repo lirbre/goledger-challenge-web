@@ -1,1 +1,0 @@
-{"c":["pages/list/[label]","pages/index","webpack"],"r":[],"m":["./src/components/_ModalBody/delete.tsx","./src/components/_ModalBody/edit.tsx","./src/components/_ModalBody/index.tsx","./src/hooks/useDelete.tsx","./src/hooks/useEdit.tsx"]}

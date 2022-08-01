@@ -15,9 +15,7 @@ const Index = () => {
   useEffect(() => {
     callFetch();
   }, []);
-
-  useEffect(() => console.log(myRes), [myRes]);
-
+  
   const mapOptions = useMemo(
     () =>
       !isLoading &&

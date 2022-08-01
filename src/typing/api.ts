@@ -10,8 +10,11 @@ export interface SearchProps {
   "@key": string;
   "@lastTouchBy": string;
   "@lastTx": string;
-  driver: { "@assetType": string; "@key": string };
+  driver?: { "@assetType": string; "@key": string };
+  team?: { "@assetType": string; "@key": string };
+  winner?: { "@assetType": string; "@key": string };
   id: number;
   model?: string;
   name?: string;
+  prize?: number;
 }

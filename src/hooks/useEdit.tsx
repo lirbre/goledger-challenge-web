@@ -4,40 +4,85 @@ const url =
   "http://ec2-100-25-136-128.compute-1.amazonaws.com/api/invoke/updateAsset";
 
 interface CallEditProps {
-    docType: string
-    key: string
-    newValue: string
-    refetch(key: string): void
+  docType: string;
+  key: string;
+  newValue: string;
+  refetch(key: string): void;
+  newKey: string;
+  newPrize: number;
 }
 
 export const useEdit = <T,>() => {
   const [myRes, setMyRes] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const callEdit = async ({ docType, key, newValue, refetch }: CallEditProps) => {
+  const callEdit = async ({
+    docType,
+    key,
+    newValue,
+    refetch,
+    newKey,
+    newPrize,
+  }: CallEditProps) => {
     let body;
 
-    console.log(newValue)
+    switch (true) {
+      case docType === "car":
+        body = {
+          update: {
+            "@assetType": `${docType}`,
+            "@key": `${key}`,
+            model: `${newValue}`,
+            "@lastTouchBy": "https://www.linkedin.com/in/lirbre/",
+            driver: {
+              "@key": newKey,
+            },
+          },
+        };
+        break;
 
-    if (docType === "car") {
-      body = {
-        update: {
-          "@assetType": `${docType}`,
-          "@key": `${key}`,
-          model: `${newValue}`,
-          "@lastTouchBy": "https://www.linkedin.com/in/lirbre/",
-        },
-      };
-    } else {
-      body = {
-        update: {
-          "@assetType": `${docType}`,
-          "@key": `${key}`,
-          name: `${newValue}`,
-          "@lastTouchBy": "https://www.linkedin.com/in/lirbre/",
-        },
-      };
+      case docType === "driver":
+        body = {
+          update: {
+            "@assetType": `${docType}`,
+            "@key": `${key}`,
+            name: `${newValue}`,
+            "@lastTouchBy": "https://www.linkedin.com/in/lirbre/",
+            team: {
+              "@key": newKey,
+            },
+          },
+        };
+        break;
+
+      case docType === "event":
+        body = {
+          update: {
+            "@assetType": `${docType}`,
+            "@key": `${key}`,
+            name: `${newValue}`,
+            "@lastTouchBy": "https://www.linkedin.com/in/lirbre/",
+            prize: newPrize,
+            winner: {
+              "@key": newKey,
+            },
+          },
+        };
+        break;
+
+      default:
+        body = {
+          update: {
+            "@assetType": `${docType}`,
+            "@key": `${key}`,
+            name: `${newValue}`,
+            "@lastTouchBy": "https://www.linkedin.com/in/lirbre/",
+          },
+        };
+        break;
     }
+
+    console.log(body)
 
     const header = {
       "Content-Type": "application/json",
@@ -46,8 +91,8 @@ export const useEdit = <T,>() => {
     fetch(url, { method: "PUT", body: JSON.stringify(body), headers: header })
       .then((res) => res.json())
       .then((res) => {
-        console.log("new value, -> ", res);
         setMyRes(res);
+        console.log(res)
       })
       .catch((err) => console.error("something happened -> ", err))
       .finally(() => {

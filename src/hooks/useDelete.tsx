@@ -21,7 +21,6 @@ export const useDelete = <T,>() => {
       },
     };
 
-    console.log(body)
     const header = {
       "Content-Type": "application/json",
     };
@@ -33,7 +32,6 @@ export const useDelete = <T,>() => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log("deleted value, -> ", res);
         setMyRes(res);
       })
       .catch((err) => console.error("something happened -> ", err))

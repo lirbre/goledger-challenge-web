@@ -1,4 +1,5 @@
 import { useModal } from "@/hooks";
+import { SearchProps } from "@/typing/api";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { toast } from "react-toastify";
 
@@ -6,32 +7,35 @@ interface EditModalProps {
   title?: string;
   handleClick(newValue: string): void;
   buttonName: string;
-  oldValue: string;
+  oldItem: SearchProps;
 }
 
 export const EditModal = ({
   title,
   handleClick,
   buttonName,
-  oldValue,
+  oldItem,
 }: EditModalProps) => {
   const { close } = useModal();
-  const [newValue, setNewValue] = useState<string>(oldValue);
+  const [newItem, setNewItem] = useState<SearchProps>(oldItem);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    if (newValue.split("").length === 0) {
+    if ((newItem?.model || newItem?.name || "").split("").length === 0) {
       toast.warn("You can't edit to a empty name.");
       return;
     }
 
-    if (newValue === oldValue) {
+    if (
+      (newItem?.model || newItem?.name || "") !==
+      (oldItem?.name || oldItem?.model)
+    ) {
       toast.warn("You should change something to edit it.");
       return;
     }
 
-    handleClick(newValue);
+    handleClick(newItem?.model || newItem?.name || "");
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -40,7 +44,11 @@ export const EditModal = ({
       return;
     }
 
-    setNewValue(e.target.value);
+    setNewItem({
+      ...newItem,
+      name: e.target.value,
+      model: e.target.value,
+    });
   };
 
   return (
@@ -56,7 +64,7 @@ export const EditModal = ({
           className="border-[#e2e8f0] bg-[#fff] border h-[42px] w-full rounded-l-[4px] px-3 py-2 text-[#4a5568] text-sm font-thin focus:outline-dotted outline-[1px] outline-offset-[-2px]"
           placeholder="Editar ..."
           onChange={(e) => handleChange(e)}
-          value={newValue}
+          value={newItem?.name || newItem?.model}
           required
         />
       </form>{" "}

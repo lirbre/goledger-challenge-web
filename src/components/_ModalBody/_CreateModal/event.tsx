@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 interface CreateEventProps {
   title?: string;
-  handleClick({ docType, newValue, selectedKey, newPrize }: CreateItemProps): void;
+  handleClick({ docType, changeValue, selectedKey, newPrize }: CreateItemProps): void;
   buttonName: string;
   docType: string;
 }
@@ -69,7 +69,7 @@ export const CreateEvent = ({
         return
     }
 
-    handleClick({ docType, newValue, selectedKey, newPrize });
+    handleClick({ docType, changeValue: newValue, selectedKey });
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

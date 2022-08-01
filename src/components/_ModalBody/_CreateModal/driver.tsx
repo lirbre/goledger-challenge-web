@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 interface CreateDriverProps {
   title?: string;
-  handleClick({ docType, newValue, selectedKey }: CreateItemProps): void;
+  handleClick({ docType, changeValue, selectedKey }: CreateItemProps): void;
   buttonName: string;
   docType: string;
 }
@@ -53,7 +53,7 @@ export const CreateDriver = ({
       return;
     }
 
-    handleClick({ docType, newValue, selectedKey });
+    handleClick({ docType, changeValue: newValue, selectedKey });
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

@@ -4,8 +4,11 @@ import { useEdit } from "@/hooks";
 import { SearchProps } from "@/typing/api";
 import { AiTwotoneEdit, AiFillDelete } from "react-icons/ai";
 import Loading from "./loading";
-import { EditModal } from "./_ModalBody";
 import { DeleteModal } from "./_ModalBody/delete";
+import { EditModal } from "./_ModalBody";
+import { EditCar } from "./_ModalBody/_EditModal/car";
+import { EditDriver } from "./_ModalBody/_EditModal/driver";
+import { EditEvent } from "./_ModalBody/_EditModal/event";
 
 interface ListItemProps {
   item: SearchProps;
@@ -37,12 +40,14 @@ export const ListItem = ({ item, refetch }: ListItemProps) => {
     () => clearTimeout(closeTimeout);
   };
 
-  const editItem = (newValue: string) => {
+  const editItem = (newValue: string, newKey?: string, newPrize?: number) => {
     callEdit({
       docType: item["@assetType"],
       key: item["@key"],
+      newKey: newKey || "",
       newValue: newValue,
       refetch: refetch,
+      newPrize: newPrize || 0
     }).then(() =>
       setBody(
         <div className="pt-8">
@@ -60,15 +65,51 @@ export const ListItem = ({ item, refetch }: ListItemProps) => {
 
   const openEdit = () => {
     setIsOpen(true);
-    setTitle(`Editing ${item?.name || item?.model || ''}`);
-    setBody(
-      <EditModal
-        buttonName="Edit"
-        handleClick={editItem}
-        title={"Do you want to Edit?"}
-        oldValue={item?.name || item?.model || ''}
-      />
-    );
+    setTitle(`Editing ${item?.name || item?.model || ""}`);
+
+    switch (true) {
+      case item["@assetType"] === "car":
+        setBody(
+          <EditCar
+            buttonName="Edit!"
+            docType="car"
+            handleClick={editItem}
+            title={`Update ${item?.model} information:`}
+            oldItem={item}
+          />
+        );
+        break;
+      case item["@assetType"] === "driver":
+        setBody(
+          <EditDriver
+            buttonName="Edit!"
+            handleClick={editItem}
+            title={`Update ${item?.name} information:`}
+            oldItem={item}
+          />
+        );
+        break;
+      case item["@assetType"] === "event":
+        setBody(
+          <EditEvent
+            buttonName="Edit!"
+            handleClick={editItem}
+            title={`Update ${item?.name} information:`}
+            oldItem={item}
+          />
+        );
+        break;
+      default:
+        setBody(
+          <EditModal
+            buttonName="Edit!"
+            handleClick={editItem}
+            oldItem={item}
+            title={`Change ${item?.name || item?.model}`}
+          />
+        );
+        break;
+    }
   };
 
   const openDelete = () => {

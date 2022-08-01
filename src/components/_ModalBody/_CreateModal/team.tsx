@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 interface CreateTeamProps {
   title?: string;
-  handleClick({ docType, newValue }: CreateItemProps): void;
+  handleClick({ docType, changeValue }: CreateItemProps): void;
   buttonName: string;
   docType: string;
 }
@@ -18,7 +18,7 @@ export const CreateTeam = ({
 }: CreateTeamProps) => {
   const { close } = useModal();
   const [newValue, setNewValue] = useState<string>("");
-  
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
@@ -27,7 +27,7 @@ export const CreateTeam = ({
       return;
     }
 
-    handleClick({ docType, newValue });
+    handleClick({ docType, changeValue: newValue });
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

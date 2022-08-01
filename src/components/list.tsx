@@ -6,13 +6,18 @@ import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "react-toastify";
 import { Form } from "./form";
-import { CreateTeam, CreateDriver, CreateCar, CreateEvent } from "./_ModalBody/_CreateModal";
+import {
+  CreateTeam,
+  CreateDriver,
+  CreateCar,
+  CreateEvent,
+} from "./_ModalBody/_CreateModal";
 
 export interface CreateItemProps {
   docType: string;
-  newValue: string;
+  changeValue: string;
   selectedKey?: string;
-  newPrize?: number
+  newPrize?: number;
 }
 
 export const List = () => {
@@ -27,11 +32,17 @@ export const List = () => {
 
   const createItem = ({
     docType,
-    newValue,
+    changeValue,
     selectedKey = "",
-    newPrize = 0
+    newPrize = 0,
   }: CreateItemProps) => {
-    callCreate({ docType, newValue, refetch, selectedKey, newPrize });
+    callCreate({
+      docType,
+      newValue: changeValue,
+      refetch,
+      selectedKey,
+      newPrize,
+    });
     setBody(
       <div className="pt-8">
         <Loading />
@@ -104,7 +115,6 @@ export const List = () => {
   useEffect(() => {
     if (!myRes) return;
     !isLoading && myRes?.length === 0 && router.replace("/404");
-    console.log(myRes);
   }, [myRes, isLoading]);
 
   const filteredResult = useMemo(
