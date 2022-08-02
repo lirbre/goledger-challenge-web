@@ -40,14 +40,15 @@ export const ListItem = ({ item, refetch }: ListItemProps) => {
     () => clearTimeout(closeTimeout);
   };
 
-  const editItem = (newValue: string, newKey?: string, newPrize?: number) => {
+  const editItem = (newValue: string, newKey?: string, newPrize?: number, newDate?: string) => {
     callEdit({
       docType: item["@assetType"],
       key: item["@key"],
       newKey: newKey || "",
       newValue: newValue,
       refetch: refetch,
-      newPrize: newPrize || 0
+      newPrize: newPrize || 0,
+      newDate: newDate || ""
     }).then(() =>
       setBody(
         <div className="pt-8">

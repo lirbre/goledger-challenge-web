@@ -17,4 +17,5 @@ export interface SearchProps {
   model?: string;
   name?: string;
   prize?: number;
+  date?: string;
 }

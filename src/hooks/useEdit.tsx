@@ -10,6 +10,7 @@ interface CallEditProps {
   refetch(key: string): void;
   newKey: string;
   newPrize: number;
+  newDate: string;
 }
 
 export const useEdit = <T,>() => {
@@ -23,6 +24,7 @@ export const useEdit = <T,>() => {
     refetch,
     newKey,
     newPrize,
+    newDate,
   }: CallEditProps) => {
     let body;
 
@@ -63,6 +65,7 @@ export const useEdit = <T,>() => {
             name: `${newValue}`,
             "@lastTouchBy": "https://www.linkedin.com/in/lirbre/",
             prize: newPrize,
+            date: new Date(newDate!).toISOString(),
             winner: {
               "@key": newKey,
             },
@@ -82,7 +85,7 @@ export const useEdit = <T,>() => {
         break;
     }
 
-    console.log(body)
+    console.log(body);
 
     const header = {
       "Content-Type": "application/json",
@@ -92,7 +95,7 @@ export const useEdit = <T,>() => {
       .then((res) => res.json())
       .then((res) => {
         setMyRes(res);
-        console.log(res)
+        console.log(res);
       })
       .catch((err) => console.error("something happened -> ", err))
       .finally(() => {
