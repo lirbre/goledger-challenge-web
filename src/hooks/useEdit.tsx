@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const url =
   "http://ec2-100-25-136-128.compute-1.amazonaws.com/api/invoke/updateAsset";
@@ -95,7 +96,7 @@ export const useEdit = <T,>() => {
       .then((res) => res.json())
       .then((res) => {
         setMyRes(res);
-        console.log(res);
+        toast.success(`Successfully - ${docType} updated!`)
       })
       .catch((err) => console.error("something happened -> ", err))
       .finally(() => {

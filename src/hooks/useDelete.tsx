@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const url =
   "http://ec2-100-25-136-128.compute-1.amazonaws.com/api/invoke/deleteAsset";
@@ -33,9 +34,12 @@ export const useDelete = <T,>() => {
       .then((res) => res.json())
       .then((res) => {
         setMyRes(res);
-        console.log(res)
+        toast.success(`Successfully - ${docType} deleted!`)
       })
-      .catch((err) => console.error("something happened -> ", err))
+      .catch((err) => {
+        console.error("something happened -> ", err)
+        toast.error(`Can't delete. This ${docType} is used in another asset.`)
+      })
       .finally(() => {
         setIsLoading(false)
 

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const url =
   "http://ec2-100-25-136-128.compute-1.amazonaws.com/api/invoke/createAsset";
@@ -91,8 +92,8 @@ export const useCreate = <T,>() => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log("created value, -> ", res);
         setMyRes(res);
+        toast.success(`Successfully - ${docType} created!`)
       })
       .catch((err) => console.error("something happened -> ", err))
       .finally(() => {
