@@ -6,9 +6,7 @@ import { AiTwotoneEdit, AiFillDelete } from "react-icons/ai";
 import Loading from "./loading";
 import { DeleteModal } from "./_ModalBody/delete";
 import { EditModal } from "./_ModalBody";
-import { EditCar } from "./_ModalBody/_EditModal/car";
-import { EditDriver } from "./_ModalBody/_EditModal/driver";
-import { EditEvent } from "./_ModalBody/_EditModal/event";
+import { EditCar, EditEvent, EditDriver } from "./_ModalBody/_EditModal";
 
 interface ListItemProps {
   item: SearchProps;
@@ -40,7 +38,12 @@ export const ListItem = ({ item, refetch }: ListItemProps) => {
     () => clearTimeout(closeTimeout);
   };
 
-  const editItem = (newValue: string, newKey?: string, newPrize?: number, newDate?: string) => {
+  const editItem = (
+    newValue: string,
+    newKey?: string,
+    newPrize?: number,
+    newDate?: string
+  ) => {
     callEdit({
       docType: item["@assetType"],
       key: item["@key"],
@@ -48,7 +51,7 @@ export const ListItem = ({ item, refetch }: ListItemProps) => {
       newValue: newValue,
       refetch: refetch,
       newPrize: newPrize || 0,
-      newDate: newDate || ""
+      newDate: newDate || "",
     }).then(() =>
       setBody(
         <div className="pt-8">
