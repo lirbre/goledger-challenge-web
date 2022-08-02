@@ -17,25 +17,24 @@ export const EditModal = ({
   oldItem,
 }: EditModalProps) => {
   const { close } = useModal();
-  const [newItem, setNewItem] = useState<SearchProps>(oldItem);
+  const [newItem, setNewItem] = useState<string>(
+    oldItem?.model || oldItem?.name || ''
+  );
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    if ((newItem?.model || newItem?.name || "").split("").length === 0) {
+    if ((newItem).split("").length === 0) {
       toast.warn("You can't edit to a empty name.");
       return;
     }
 
-    if (
-      (newItem?.model || newItem?.name || "") !==
-      (oldItem?.name || oldItem?.model)
-    ) {
+    if (newItem === (oldItem?.model || oldItem?.name || "")) {
       toast.warn("You should change something to edit it.");
       return;
     }
 
-    handleClick(newItem?.model || newItem?.name || "");
+    handleClick(newItem);
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -44,11 +43,7 @@ export const EditModal = ({
       return;
     }
 
-    setNewItem({
-      ...newItem,
-      name: e.target.value,
-      model: e.target.value,
-    });
+    setNewItem(e.target.value);
   };
 
   return (
@@ -64,7 +59,7 @@ export const EditModal = ({
           className="border-[#e2e8f0] bg-[#fff] border h-[42px] w-full rounded-l-[4px] px-3 py-2 text-[#4a5568] text-sm font-thin focus:outline-dotted outline-[1px] outline-offset-[-2px]"
           placeholder="Editar ..."
           onChange={(e) => handleChange(e)}
-          value={newItem?.name || newItem?.model}
+          value={newItem}
           required
         />
       </form>{" "}

@@ -33,6 +33,7 @@ export const useDelete = <T,>() => {
       .then((res) => res.json())
       .then((res) => {
         setMyRes(res);
+        console.log(res)
       })
       .catch((err) => console.error("something happened -> ", err))
       .finally(() => {
