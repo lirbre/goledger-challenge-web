@@ -28,9 +28,16 @@ List
 
 Edit (Modal)
 -------------------------------------------------
-![Captura de ecrã de 2022-07-29 20-24-06](https://user-images.githubusercontent.com/86065449/181860018-ea1f7fe2-3a5d-4033-9b9a-6c3da345f7c4.png)
-- A simple Modal to edit Items.
+- A Modal to edit each asset type.
 
+![Captura de ecrã de 2022-08-01 21-50-07](https://user-images.githubusercontent.com/86065449/182268706-166f81fb-c682-4937-ad52-9d7b9b704b87.png)
+ 
+![Captura de ecrã de 2022-08-01 21-50-36](https://user-images.githubusercontent.com/86065449/182268738-25f7f57b-0980-4c19-9d4b-61b251c43392.png)
+ 
+![Captura de ecrã de 2022-08-01 21-50-49](https://user-images.githubusercontent.com/86065449/182268857-60a4e5d2-1d60-4ca6-804a-02a08d017667.png)
+ 
+![Captura de ecrã de 2022-08-01 21-53-34](https://user-images.githubusercontent.com/86065449/182268900-1156b086-bf76-44fd-a0db-f84bcf96e747.png)
+ 
 Delete (Modal)
 -------------------------------------------------
 ![Captura de ecrã de 2022-07-29 20-24-10](https://user-images.githubusercontent.com/86065449/181860047-e8b20c18-7511-45dc-b96f-379a9d3855b3.png)
@@ -38,11 +45,15 @@ Delete (Modal)
 
 Create (Modal)
 -------------------------------------------------
-![Captura de ecrã de 2022-07-29 22-37-53](https://user-images.githubusercontent.com/86065449/181865383-88e3feeb-e95a-481f-afd9-ec99508d631e.png)
-![Captura de ecrã de 2022-07-29 22-38-05](https://user-images.githubusercontent.com/86065449/181865384-8bf792ce-25fe-41a7-8f25-3e934e64bb0b.png)
-![Captura de ecrã de 2022-07-29 22-38-14](https://user-images.githubusercontent.com/86065449/181865385-0bfe9c53-4f07-46eb-a369-fb7be0790a8a.png)
-![Captura de ecrã de 2022-07-29 22-39-21](https://user-images.githubusercontent.com/86065449/181865386-d2b05f3d-8732-4a22-a45d-5608e26c42e9.png)
 - A Modal to create each new item.
+
+![Captura de ecrã de 2022-07-29 22-37-53](https://user-images.githubusercontent.com/86065449/181865383-88e3feeb-e95a-481f-afd9-ec99508d631e.png)
+
+![Captura de ecrã de 2022-08-01 21-50-40](https://user-images.githubusercontent.com/86065449/182268831-fe99b4f5-df4e-4026-89ab-75613038609c.png)
+
+![Captura de ecrã de 2022-07-29 22-38-05](https://user-images.githubusercontent.com/86065449/181865384-8bf792ce-25fe-41a7-8f25-3e934e64bb0b.png)
+
+![Captura de ecrã de 2022-07-29 22-38-14](https://user-images.githubusercontent.com/86065449/181865385-0bfe9c53-4f07-46eb-a369-fb7be0790a8a.png)
 
 404 - Not Found page
 -------------------------------------------------
