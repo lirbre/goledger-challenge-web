@@ -128,10 +128,7 @@ export const List = () => {
 
         return (
           (item.name || item.model)
-            ?.split("")
-            .slice(0, searchBar.length)
-            .join("")
-            .toLowerCase() === searchBar.toLowerCase()
+            ?.toLowerCase().includes(searchBar.toLowerCase())
         );
       }),
     [myRes, searchBar]
